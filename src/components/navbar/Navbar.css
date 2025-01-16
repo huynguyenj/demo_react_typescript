@@ -10,6 +10,7 @@
       align-items: center;
       background: var(--nav-bg);
       padding: 0 2rem;
+      z-index: 999;
       .icon img{
             left: 0;
             width: 10rem;

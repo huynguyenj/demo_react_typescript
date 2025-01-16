@@ -1,0 +1,147 @@
+:root{
+      --nav-bg:#344CB7;
+      --li-bg:#577BC1;
+      --front-clr:#fff;
+      --content_bg:#9AA6B2;
+}
+@keyframes appear{
+      from{
+            opacity: 0;
+            scale: 0.5;
+      }
+      to{
+            opacity: 1;
+            scale: 1;
+      }
+}
+@keyframes slideLeft{
+      from{
+            opacity: 0;
+            transform: translateX(-100%);
+      }to{
+            opacity: 1;
+            transform: translateX(0);
+      }
+}
+@keyframes slideRight{
+      from{
+            opacity: 0;
+            transform: translateX(100%);
+      }to{
+            opacity: 1;
+            transform: translateX(0);
+      }
+}
+.home_container{
+      margin-top: 5rem;
+      min-height: 100vh;
+}
+.start_content{
+      width: 50%;
+      transform: translate(50%);
+      text-align: center;
+      margin-bottom: 7rem;
+      line-height: 3rem;
+  
+      .home_title{
+            position: relative;
+            font-size: 4.2vw;
+            text-shadow:  0px 15px 15px rgba(0, 0, 0, 0.6);
+            line-height: 4rem;
+      }
+      .home_subtitle{
+            margin-top: 1rem;
+            letter-spacing: 2px;
+      }
+}
+.reacthooks_content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      h2{
+            font-size: 2.5vw;
+            font-weight: 400;
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 50% cover 50%;
+
+      }
+      .explaination{
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            p{
+                  text-align: start;
+                  width: 550px;
+            }
+            .hook_explain{
+                  animation: slideLeft linear;
+                  animation-timeline: view();
+                  animation-range: entry 50% cover 50%;
+            }
+            .rule_hooks{
+                  animation: slideRight linear;
+                  animation-timeline: view();
+                  animation-range: entry 50% cover 50%;
+            }
+      }
+}
+.react_hook_meaning .hook_img{
+      margin: 4rem 0; 
+      width: 100%;
+}
+.react_hook_meaning .hook_img .img_content{
+   display: flex;
+   background: var(--content_bg);
+   height: 35rem;
+   align-items: center;   
+   gap: 1.7rem;
+   margin-bottom: 3rem;
+   padding: 0 2rem;
+   
+   p{
+      text-align: start;
+      line-height: 2rem;
+      font-size: clamp(0.7rem, 1.2vw,1.5rem);
+      animation: slideRight linear;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+      h2{
+            text-align: start;
+            margin-bottom: 1rem;
+      }
+      span{
+            font-weight: 600;
+      }
+}
+   
+}
+.react_hook_meaning .hook_img .img_content img{
+      width: 40rem;
+      aspect-ratio: 4/3;
+      animation: slideLeft linear;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+      
+}
+.react_hook_meaning .hook_img .img_content2{
+      margin: 4rem 0;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 2rem;
+      
+}
+.react_hook_meaning .hook_img .img_content2 img:first-child{
+      animation: slideLeft linear;
+      animation-timeline: view();
+      animation-range: entry 0% cover 20%;
+}
+.react_hook_meaning .hook_img .img_content2 img:nth-child(2){
+      animation: slideRight linear;
+      animation-timeline: view();
+      animation-range: entry 0% cover 20%;
+}
+
