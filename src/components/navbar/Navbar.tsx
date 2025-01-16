@@ -61,6 +61,7 @@ function Navbar() {
                   {hook.map((e) => (
                     <div className="items">
                       <Link to={`/${e}`}>{e}</Link>
+                      <hr />
                     </div>
                   ))}
                 </div>
@@ -80,6 +81,7 @@ function Navbar() {
                   {TypeScript.map((e) => (
                     <div className="items">
                       <Link to={`/${e}`}>{e}</Link>
+                      <hr />
                     </div>
                   ))}
                 </div>

@@ -4,6 +4,7 @@
       --front-clr:#fff;
 }
 .navbar_container{
+      top: 0;
       position: sticky;
       display: flex;
       align-items: center;
@@ -19,7 +20,7 @@
       display: flex;
       justify-content: space-between;
       gap: 4rem;
-      transform: translateX(100%);
+      transform: translateX(120%);
       li{
             list-style: none;
             display: flex;
@@ -56,6 +57,7 @@
       .items{
             border-radius: 10px;
             transition: 0.2s ease;
+          
       }
 }
 .list_items li .popupItem .items:hover{
