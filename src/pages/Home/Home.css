@@ -39,12 +39,12 @@
       min-height: 100vh;
 }
 .start_content{
-      width: 50%;
+      width: clamp(20%,50%,70%);
       transform: translate(50%);
       text-align: center;
-      margin-bottom: 7rem;
-      line-height: 3rem;
-  
+      margin: 12rem 0;
+      line-height: 2rem;
+      
       .home_title{
             position: relative;
             font-size: 4.2vw;
@@ -66,7 +66,7 @@
             font-weight: 400;
             animation: appear linear;
             animation-timeline: view();
-            animation-range: entry 50% cover 50%;
+            animation-range: entry 0% cover 50%;
 
       }
       .explaination{
@@ -76,23 +76,23 @@
             gap: 2rem;
             p{
                   text-align: start;
-                  width: 550px;
+                  width: clamp(10rem,35vw,45rem);
             }
             .hook_explain{
                   animation: slideLeft linear;
                   animation-timeline: view();
-                  animation-range: entry 50% cover 50%;
+                  animation-range: entry 0% cover 40%;
             }
             .rule_hooks{
                   animation: slideRight linear;
                   animation-timeline: view();
-                  animation-range: entry 50% cover 50%;
+                  animation-range: entry 0% cover 40%;
             }
       }
 }
 .react_hook_meaning .hook_img{
       margin: 4rem 0; 
-      width: 100%;
+      width: clamp(30%,100%,110%);
 }
 .react_hook_meaning .hook_img .img_content{
    display: flex;
@@ -107,7 +107,7 @@
       color: var(--front-clr3);
       text-align: start;
       line-height: 2rem;
-      font-size: clamp(0.7rem, 1.2vw,1.5rem);
+      font-size: clamp(0.5rem, 1.2vw,1.5rem);
       animation: slideRight linear;
       animation-timeline: view();
       animation-range: entry 0% cover 40%;
@@ -124,8 +124,8 @@
    
 }
 .react_hook_meaning .hook_img .img_content img{
-      width: 40rem;
-      aspect-ratio: 4/3;
+      width: clamp(10rem,35vw,40rem);
+      aspect-ratio: 1;
       animation: slideLeft linear;
       animation-timeline: view();
       animation-range: entry 0% cover 40%;
@@ -140,11 +140,13 @@
       
 }
 .react_hook_meaning .hook_img .img_content2 img:first-child{
+      width: clamp(10rem,30vw,50rem);
       animation: slideLeft linear;
       animation-timeline: view();
       animation-range: entry 0% cover 20%;
 }
 .react_hook_meaning .hook_img .img_content2 img:nth-child(2){
+      width: clamp(10rem,30vw,50rem);
       animation: slideRight linear;
       animation-timeline: view();
       animation-range: entry 0% cover 20%;
@@ -181,7 +183,7 @@
             }
       }
       .typescript_img{
-            padding: 1rem 0;
+            padding: 1rem 0.8rem;
             background: var(--content_bg);
       }
       .typescript_img .ts{
@@ -191,26 +193,40 @@
             justify-content: space-between;
             margin: 2rem 0; 
             p{
-                  font-size: 1.8rem;
+                  font-size: clamp(0.7rem,1.7vw,2rem);
                   text-align: center;
                   margin: 0 1rem;
             }  
       }
       .typescript_img .typescript_img1{
+
             animation: slideLeft linear;
             animation-timeline: view();
             animation-range: entry 0% cover 30%;
+            img{
+                  width: clamp(10rem,40vw,50rem);
+            }
       }
       .typescript_img .typescript_img2{
+
             animation: slideRight linear;
             animation-timeline: view();
             animation-range: entry 0% cover 30%;
+            img{
+                  width: clamp(10rem,40vw,50rem);
+
+            }
       }
       .typescript_img .typescript_img3{
             animation: slideLeft linear;
             animation-timeline: view();
-            animation-range: entry 0% cover 30%;
+            animation-range: entry 0% cover 10%;
+            img{
+                  width: clamp(10rem,40vw,50rem);
+
+            }
       }
 }
+
 
 

@@ -12,8 +12,9 @@ function App() {
     <Navbar/>
       <Routes>
           <Route path='/' element={<Home/>}>
-            <Route path='/Union types_Enum' element={<UnionTypes_Enum/>}></Route>
+           
           </Route>
+          <Route path='/UnionType_Enum' element={<UnionTypes_Enum/>}></Route>
         </Routes>     
     </>
   )
