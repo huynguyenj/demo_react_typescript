@@ -1,3 +1,4 @@
+import Banner from "../../components/banner/Banner";
 import "./Home.css";
 function Home() {
   return (
@@ -111,6 +112,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Banner/>
     </div>
   );
 }

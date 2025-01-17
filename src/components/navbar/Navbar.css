@@ -7,10 +7,12 @@
       top: 0;
       position: sticky;
       display: flex;
+      justify-content: space-around;
       align-items: center;
       background: var(--nav-bg);
       padding: 0 2rem;
       z-index: 999;
+      padding: 0 2rem;
       .icon img{
             left: 0;
             width: 10rem;
@@ -19,9 +21,8 @@
 }
 .list_items{
       display: flex;
-      justify-content: space-between;
       gap: 4rem;
-      transform: translateX(120%);
+      /* transform: translateX(120%); */
       li{
             list-style: none;
             display: flex;

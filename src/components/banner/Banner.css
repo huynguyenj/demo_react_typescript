@@ -1,0 +1,66 @@
+:root{
+      --banner_bg:#1D1D25;
+      --nav-bg:#344CB7;
+      --li-bg:#577BC1;
+      --front-clr:#fff;
+      --front-clr2:#000000;
+      --front-clr3:#7D8185;
+      --front-clr4:#04AEAE;
+      --content_bg:#F2F8F8;
+}
+.banner_container{
+      position: relative;
+      margin: 2rem 0 0;
+      background: var(--banner_bg);
+      width: clammp(10rem,20vw,30rem);
+      color: var(--front-clr);
+      aspect-ratio: 5/1;
+      align-items: center;
+      text-align: center;
+      padding: 3rem;
+      h3{
+            margin: 2rem 0 0 0;
+            color: var(--front-clr4);
+            font-size: clamp(1rem,1.3vw,2.2rem);
+      }
+      h2{
+            font-size: clamp(2rem,3.3vw,4rem);
+      }
+
+}
+.banner_container .react_img{
+      position: absolute;
+      top: 20%;
+      left: 30%;
+      transform: translate(50%,50%);
+      img{
+            width: 90px;
+            height: 80px;
+            animation: scale 2s alternate infinite;
+      }
+}
+.banner_container .typescript_img{
+      position: absolute;
+      right: 30%;
+      top: 30%;
+
+      img{
+            width: 110px;
+            height: 100px; 
+            animation: float 1s alternate infinite;
+
+      }
+}
+
+@keyframes float{
+     to{
+      transform: translate(15%);
+      /* scale: 1.2; */
+     }
+}
+@keyframes scale{
+      to{
+       transform: rotate(180deg);
+       scale: 1.2;
+      }
+ }

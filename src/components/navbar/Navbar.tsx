@@ -13,8 +13,8 @@ const hook: string[] = [
 ];
 const TypeScript: string[] = [
   "Generics",
-  "Type Anotations_Interface_Type",
-  "Union types_Enum",
+  "Type_Anotations_Interface_Type",
+  "UnionType_Enum",
 ];
 
 const style: React.CSSProperties = {
@@ -60,7 +60,7 @@ function Navbar() {
                 <div className="popupItem">
                   {hook.map((e) => (
                     <div className="items">
-                      <Link to={`/${e}`}>{e}</Link>
+                      <Link to={`${e}`}>{e}</Link>
                       <hr />
                     </div>
                   ))}
@@ -80,7 +80,7 @@ function Navbar() {
                 <div className="popupItem">
                   {TypeScript.map((e) => (
                     <div className="items">
-                      <Link to={`/${e}`}>{e}</Link>
+                      <Link to={`${e}`}>{e}</Link>
                       <hr />
                     </div>
                   ))}
