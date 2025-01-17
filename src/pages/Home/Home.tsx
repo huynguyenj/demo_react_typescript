@@ -69,36 +69,45 @@ function Home() {
           <h2>What is TypeScript ?</h2>
           <div className="typescript_explain">
             <p>
-              JavaScript and More <br />
+              <span>JavaScript and More</span> <br />
               TypeScript adds additional syntax to JavaScript to support a
               tighter integration with your editor. Catch errors early in your
               editor.
             </p>
             <p>
-              A Result You Can Trust <br />
+              <span>A Result You Can Trust </span><br />
               TypeScript code converts to JavaScript, which runs anywhere
               JavaScript runs: In a browser, on Node.js, Deno, Bun and in your
               apps.
             </p>
             <p>
-              Safety at Scale <br />
+              <span>Safety at Scale</span> <br />
               TypeScript understands JavaScript and uses type inference to give
               you great tooling without additional code.
             </p>
           </div>
           <div className="typescript_img">
+            <div className="typescript_img1 ts">
             <img
               src="https://code.visualstudio.com/assets/docs/typescript/tutorial/unreachable-code-detected.png"
               alt="typescript_img"
             />
+            <p> TypeScript introduces static typing, allowing developers to define variable types for safe.</p>
+            </div>
+            <div className="typescript_img2 ts">
+            <p>Enums in TypeScript allow for better organization of constants</p>
             <img
-              src="https://miro.medium.com/v2/resize:fit:1400/1*64ymERM2wpik19GcJAGmZg.png"
+              src="https://preview.redd.it/zu2wlneh5gm91.png?width=820&format=png&auto=webp&s=dbe839f43c70dc34a2fd17fdd4a1c9aad119d048"
               alt="typescript_img"
             />
+            </div>
+            <div className="typescript_img3 ts">
             <img
               src="https://ypcode.wordpress.com/wp-content/uploads/2017/08/interface01.png"
               alt="typescript_img"
             />
+            <p> Interfaces define the structure of objects, ensuring the code adheres to specified formats</p>
+            </div>
           </div>
         </div>
       </div>
