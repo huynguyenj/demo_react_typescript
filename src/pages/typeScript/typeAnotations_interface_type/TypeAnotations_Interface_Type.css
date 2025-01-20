@@ -1,0 +1,56 @@
+
+
+.code-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.code-column {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.code {
+    background-color: #282c34;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+}
+
+.description {
+    background-color: #f8f9fa;
+    padding: 15px;
+    gap: 5rem;
+    font-size: 16px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.description p {
+    margin: 5px 0;
+}
+.syntax-highlighter {
+    position: relative;
+}
+
+.syntax-highlighter code {
+    counter-reset: line;
+}
+
+.syntax-highlighter code span {
+    display: flex;
+    align-items: center;
+}
+
+.syntax-highlighter code span::before {
+    content: attr(data-comment);
+    color: #bbb;
+    font-style: italic;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
