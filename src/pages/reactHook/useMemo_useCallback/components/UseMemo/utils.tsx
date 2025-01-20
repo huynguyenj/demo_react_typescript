@@ -25,7 +25,7 @@ export function filterTodos(todos: Todo[], tab: string): Todo[] {
         // Do nothing for 500 ms to emulate extremely slow code
     }
 
-    return todos.filter((todo) => {
+    return todos.filter(function(todo) {
         if(tab === "all") {
             return true;
         } else if (tab === "active") {

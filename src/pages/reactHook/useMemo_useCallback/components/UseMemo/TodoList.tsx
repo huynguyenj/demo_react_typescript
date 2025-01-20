@@ -7,8 +7,10 @@ interface TodoListProps {
     tab: string;
 }
 
-const TodoList: React.FC<TodoListProps> = ({todos, theme, tab}) => {
-    const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos,tab]);
+function TodoList({todos, theme, tab}: TodoListProps) {
+    const visibleTodos = useMemo(function() {
+        return filterTodos(todos, tab);
+    }, [todos, tab]);
 
     return (
         <div className={theme}>
@@ -18,14 +20,16 @@ const TodoList: React.FC<TodoListProps> = ({todos, theme, tab}) => {
                 </b>
             </p>
             <ul>
-                {visibleTodos.map((todo) => (
-                    <li key={todo.id}>
-                        {todo.completed ? <s>{todo.text}</s>: todo.text}
-                    </li>
-                ))}
+                {visibleTodos.map(function(todo) {
+                    return (
+                        <li key={todo.id}>
+                            {todo.completed ? <s>{todo.text}</s>: todo.text}
+                        </li>
+                    );
+                })}
             </ul>
         </div>
-    )
+    );
 }
 
 export default TodoList;
