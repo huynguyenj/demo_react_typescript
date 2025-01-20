@@ -63,10 +63,10 @@ function UnionTypes_Enum() {
   return (
     <div className={`union_enum_container ${theme}`}>
       <div className="enum_union_explaination">
-        <h1>What is <span>Enum</span> and <span>Union</span></h1>
+        <h1>What is <span>Enum</span> and <span>Union</span>?</h1>
         <p className="Enum_explain">
           <h2>Enum</h2>
-        Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript. 
+        Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript. <br /> 
         Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums.
         </p>
         <p className="union_explain">
