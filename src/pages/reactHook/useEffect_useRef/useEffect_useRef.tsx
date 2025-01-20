@@ -818,17 +818,17 @@ null>(null);
               </Heading>
             </div>
 
-            <p className="text-base/7 text-gray-600 max-w-prose text-center text-pretty">PingPanda is the easiest way to monitor your SaaS. Get instant notification for
+            <p className="text-base/7 text-gray-600 max-w-prose text-center text-pretty">placeholder
               {" "}
-              <span className="font-semibold text-gray-700">sales, new users, or any other events</span>
+              <span className="font-semibold text-gray-700">placeholder</span>
               {" "}
-              sent directly to your Discord.</p>
+              placeholder.</p>
 
             <ul className="space-y-2 text-base/7 text-gray-600 text-left flex-col items-start">
               {[
-                "Real-time Discord alerts for critical events",
-                "Buy once, use forever - Easy to Setup",
-                "Track sales, new users, or any other events",
+                "Placeholder",
+                "Placeholder",
+                "Placeholder",
               ].map((item, index) => (
                 <li key={index} className="flex gap-1.5 items-center text-left">
                   <Dot className="size-5 shrink-0 text-brand-700" />
