@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { MaxWidthWrapper } from './extras/max-width-wrapper';
 import { Heading } from './extras/heading';
-import { ArrowBigUp, BellRing, ChevronDown, Copy, Dot } from 'lucide-react';
+import { ArrowBigUp, BellRing, ChevronDown, Copy, Dot, Plus } from 'lucide-react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
@@ -196,6 +196,7 @@ const UseEffect_useRef: React.FC = () => {
   const intervalRef = useRef<number | null>(null);
   const [counting, setCounting] = useState(0);
   const prevCountRef = useRef(0);
+
   // let intervalId;
 
   function handleClick() {
@@ -210,11 +211,21 @@ const UseEffect_useRef: React.FC = () => {
     inputRef.current?.focus();
   }, []);
 
+  //countHistory
+
   useEffect(() => {
-    prevCountRef.current = count;
-  }, [count]);
+    prevCountRef.current = counting;
+  }, [counting]);
 
   //useRef timer
+  const formatTime = (totalSeconds: number): string => {
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  };
 
   useEffect(() => {
     intervalRef.current = window.setInterval(() => {
@@ -224,19 +235,31 @@ const UseEffect_useRef: React.FC = () => {
 
   const clickCounting =
     `const clickCount = useRef(0);
-const [stateCount, setStateCount] = 
-useState(0);
-`
+const [stateCount, setStateCount] = useState(0);
 
-  const focusClick = `const inputRef = 
-useRef<HTMLInputElement>(null);`
+function handleClick() {
+    setStateCount(stateCount + 1);
+    clickCount.current++
+
+    console.log('State: ', stateCount);
+    console.log('Ref: ', clickCount.current);
+  }`
+
+  const focusAuto = `const inputRef = useRef<HTMLInputElement>(null);`
 
   const intervalTimer =
-    `const [seconds, setSeconds] = 
-    useState(1000000);
-const intervalRef = useRef<number | 
-null>(null);
+    `const [seconds, setSeconds] = useState(1000000);
+const intervalRef = useRef<number | null>(null);
 `
+
+  const countHistory = `const [counting, setCounting] = useState(0);
+const prevCountRef = useRef(0);
+
+  useEffect(() => {
+    prevCountRef.current = counting;
+  }, [counting]);`
+
+
 
   return (
     <>
@@ -245,31 +268,13 @@ null>(null);
           <div className="relative mx-auto text-center flex flex-col items-center gap-10">
             <div>
               <Heading className="">
-                <span>How to implement <span className='text-blue-500'>useEffect</span> Showcase</span>
+                <span>How to implement <span className='text-blue-500'>useEffect</span>, <span className='text-blue-500'>useRef</span></span>
                 <br />
                 <span className="">Learning the ropes</span>
               </Heading>
+
+              <hr className="mt-10 border-t-2 border-gray-300" />
             </div>
-
-            <p className="text-base/7 text-gray-600 text-center text-pretty whitespace-nowrap"><span className='text-blue-500 font-semibold'>useEffect</span> is a React Hook that lets you perform side effects in function components. Side effects include data fetching, subscriptions, manual DOM manipulations, event listeners, and more.
-              {" "}
-              <span className="font-semibold text-gray-700">It replaces the lifecycle methods componentDidMount, componentDidUpdate, componentWillUnmount</span>
-              {" "}
-              in class components.</p>
-
-            <ul className="space-y-2 text-base/7 text-gray-600 text-left flex-col items-start">
-              {[
-                { text: "Initial Render (componentDidMount)", description: "Run once after the component mounts" },
-                { text: "Re-Renders (componentDidUpdate)", description: "Runs after every re-render if dependencies change." },
-                { text: "Cleanup (componentWillUnmount)", description: "If a function is returned inside useEffect, it executes before the component unmounts." },
-              ].map((item, index) => (
-                <li key={index} className="flex gap-1.5 items-center text-left">
-                  <Dot className="size-5 shrink-0 text-brand-700" />
-                  <span className="text-blue-500 font-semibold">{item.text}</span> - {item.description}
-                </li>
-              ))}
-            </ul>
-
           </div>
         </MaxWidthWrapper>
       </section>
@@ -278,7 +283,26 @@ null>(null);
         <MaxWidthWrapper>
 
           <h1 className='justify-start text-left text-3xl mb-6'>The many uses of <span className='text-blue-500 font-semibold'>useEffect</span>:</h1>
-          <div className='rounded-lg bg-[#282c34]'>
+          <p className="text-base/7 text-gray-600 text-center text-pretty whitespace-nowrap"><span className='text-blue-500 font-semibold'>useEffect</span> is a React Hook that lets you perform side effects in function components. Side effects include data fetching, subscriptions, manual DOM manipulations, event listeners, and more.
+            {" "}
+            <span className="font-semibold text-gray-700">It replaces the lifecycle methods componentDidMount, componentDidUpdate, componentWillUnmount</span>
+            {" "}
+            in class components.</p>
+
+          <ul className="space-y-2 text-base/7 text-gray-600 text-left flex-col items-start py-32">
+            {[
+              { text: "Initial Render (componentDidMount)", description: "Run once after the component mounts" },
+              { text: "Re-Renders (componentDidUpdate)", description: "Runs after every re-render if dependencies change." },
+              { text: "Cleanup (componentWillUnmount)", description: "If a function is returned inside useEffect, it executes before the component unmounts." },
+            ].map((item, index) => (
+              <li key={index} className="flex gap-1.5 items-center text-left">
+                <Dot className="size-5 shrink-0 text-brand-700" />
+                <span className="text-blue-500 font-semibold">{item.text}</span> - {item.description}
+              </li>
+            ))}
+          </ul>
+
+          <div className='rounded-lg bg-[#282c34] mb-20'>
             <p className="rounded-lg p-8 mb-6 justify-start text-left text-base/7 text-[#abb2bf] text-pretty whitespace-nowrap">
               <Dot className="inline-block" />
               Imagine you have a toy car that moves when you press a button. But sometimes, you want it to do something special—like honk its horn—whenever you turn it on.
@@ -804,54 +828,47 @@ null>(null);
 
             </div>
           </div>
+          <hr className="mt-10 border-t-2 border-gray-300" />
         </MaxWidthWrapper>
       </section>
 
-      <section className="relative py-24 sm:py-32 bg-brand-25">
-        <MaxWidthWrapper className="text-center">
-          <div className="relative mx-auto text-center flex flex-col items-center gap-10">
-            <div>
-              <Heading className="">
-                <span>How to implement <span className='text-blue-500'>useRef</span> Showcase</span>
-                <br />
-                <span className="">Learning the ropes</span>
-              </Heading>
-            </div>
+      <section className="mt-32 relative bg-brand-25">
+        <MaxWidthWrapper>
+          <h1 className='justify-start text-left text-3xl mb-6'>The interesting uses of <span className='text-blue-500 font-semibold'>useRef</span>:</h1>
+          <p className="text-base/7 text-gray-600 text-pretty whitespace-nowrap"><span className='text-blue-500 font-semibold'>useRef</span> useRef is a React Hook that allows you to persist values across renders without causing a re-render when the value changes.
+            {" "}
+            <span className="font-semibold text-gray-700">It returns a mutable object (ref) with a <span className='text-slate-500'>.current</span> property</span>
+            {" "}
+            that can store a reference to a DOM element or any other value.</p>
 
-            <p className="text-base/7 text-gray-600 max-w-prose text-center text-pretty">placeholder
-              {" "}
-              <span className="font-semibold text-gray-700">placeholder</span>
-              {" "}
-              placeholder.</p>
-
-            <ul className="space-y-2 text-base/7 text-gray-600 text-left flex-col items-start">
-              {[
-                "Placeholder",
-                "Placeholder",
-                "Placeholder",
-              ].map((item, index) => (
-                <li key={index} className="flex gap-1.5 items-center text-left">
-                  <Dot className="size-5 shrink-0 text-brand-700" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="space-y-2 text-base/7 text-gray-600 text-left flex-col items-start py-32">
+            {[
+              { text: "Access or modify", description: "a DOM element without re-rendering." },
+              { text: "Store mutable values", description: "that don't trigger re-renders." },
+              { text: "Keep track of previous values", description: "- timers, or avoid unnecessary effects." },
+            ].map((item, index) => (
+              <li key={index} className="flex gap-1.5 items-center text-left justify-center">
+                <Dot className="size-5 shrink-0 text-brand-700" />
+                <span className="text-blue-500 font-semibold">{item.text}</span>{item.description}
+              </li>
+            ))}
+          </ul>
         </MaxWidthWrapper>
       </section>
 
       <section>
         <MaxWidthWrapper>
-          <div className='grid grid-cols-1 gap-4 sm:grid-cols-1 lg:grid-cols-2 lg:grid-rows-2'>
-            <div className='bg-blue-100 p-4 rounded-tl-lg max-lg:rounded-t-[2rem] lg:rounded-l-[2rem] overflow-auto max-h-[30rem] scrollbar-hide'>
-              <div className=''>
-                Count: {stateCount}
+          <div className='grid grid-cols-1 gap-4 sm:grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 mb-20'>
+            <div className='p-4 rounded-tl-lg max-lg:rounded-t-[2rem] lg:rounded-l-[2rem] overflow-auto max-h-[30rem] scrollbar-hide border border-gray-300'>
+              <div className='mt-2 text-xl/7 font-medium tracking-tight text-brand-950 max-lg:text-center'>Hey! No re-rendering!</div>
+              <div className='mt-6 flex items-center justify-center'>
+                <div className='px-4'><span className='font-semibold'>Count: </span>{stateCount}</div>
                 <br />
-                <button className='bg-blue-500 px-4 py-2 text-white rounded-lg mt-1' onClick={handleClick}>Click me!</button>
+                <button className='bg-blue-500 px-4 py-2 text-white rounded-full' onClick={handleClick}>Click me!</button>
               </div>
 
-              <div className="relative min-h-[25rem] w-full grow mb-6">
-                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-tl-xl rounded-tr-xl bg-gray-900 shadow-2xl">
+              <div className="relative min-h-[25rem] w-full grow mb-20">
+                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-lg bg-gray-900 shadow-2xl">
                   <div className="flex bg-gray-800/40 ring-1 ring-white/5">
                     <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
                       <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
@@ -884,17 +901,27 @@ null>(null);
                 </div>
               </div>
 
+              <p className="justify-center text-left text-base/7 text-[#4b5563] text-pretty whitespace-nowrap">
+                <Dot className="inline-block" />
+                You can see how <span className='font-semibold'>stateCount</span> logs the old value because the re-rendering happens after the function execution.
+                <br />
+                <Dot className="inline-block" />
+                You can see how <span className='font-semibold'>clickCount.current</span> updates immediately since <span className='text-blue-500 font-semibold'>useRef</span> does not wait for a re-render.
+              </p>
+
             </div>
 
-            <div className='bg-blue-100 p-4 rounded-tr-lg max-lg:rounded-t-[2rem] lg:rounded-r-[2rem] overflow-auto max-h-[30rem] scrollbar-hide'>
-              <input ref={inputRef} placeholder="Start typing..." />
+            <div className='p-4 rounded-tr-lg max-lg:rounded-t-[2rem] lg:rounded-r-[2rem] overflow-auto max-h-[30rem] scrollbar-hide border border-gray-300'>
+              <div className='mt-2 text-xl/7 font-medium tracking-tight text-brand-950 max-lg:text-center'>Auto Focus</div>
 
-              <div className="relative min-h-[25rem] w-full grow mb-6">
-                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-tl-xl rounded-tr-xl bg-gray-900 shadow-2xl">
+              <input className='border border-gray-300 mt-6 mb-1 items-center justify-center px-4 py-2' ref={inputRef} placeholder="Start typing..." />
+
+              <div className="relative min-h-[25rem] w-full grow mb-20">
+                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-lg bg-gray-900 shadow-2xl">
                   <div className="flex bg-gray-800/40 ring-1 ring-white/5">
                     <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
                       <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
-                        focusClick.tsx
+                        focusAuto.tsx
                       </div>
                     </div>
                   </div>
@@ -916,19 +943,25 @@ null>(null);
                           },
                         }}
                       >
-                        {focusClick}
+                        {focusAuto}
                       </SyntaxHighlighter>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <p className="justify-center text-center text-base/7 text-[#4b5563] text-pretty whitespace-nowrap">
+                <Dot className="inline-block" />
+                You can see how <span className='text-blue-500 font-semibold'>useRef</span> automatically focus on the text field, this create a fun interaction - <span className='font-semibold'>such as when the user is directed to a form</span>. This is especially useful for user convenience.
+              </p>
             </div>
 
-            <div className='bg-blue-100 p-4 rounded-bl-lg max-lg:rounded-b-[2rem] lg:rounded-l-[2rem] overflow-auto max-h-[30rem] scrollbar-hide'>
-              <h1>Time Left: {seconds}s</h1>
+            <div className='p-4 rounded-bl-lg max-lg:rounded-b-[2rem] lg:rounded-l-[2rem] overflow-auto max-h-[30rem] scrollbar-hide border border-gray-300'>
+              <div className='mt-2 text-xl/7 font-medium tracking-tight text-brand-950 max-lg:text-center'>Non re-render Timer</div>
+              <h1 className='mt-11'><span className='font-semibold'>Time Left: </span> <span className='text-pink-400 font-medium'>{formatTime(seconds)}</span></h1>
 
-              <div className="relative min-h-[25rem] w-full grow mb-6">
-                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-tl-xl rounded-tr-xl bg-gray-900 shadow-2xl">
+              <div className="relative min-h-[25rem] w-full grow mb-20">
+                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-lg bg-gray-900 shadow-2xl">
                   <div className="flex bg-gray-800/40 ring-1 ring-white/5">
                     <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
                       <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
@@ -960,12 +993,91 @@ null>(null);
                   </div>
                 </div>
               </div>
+
+              <p className="justify-center text-left text-base/7 text-[#4b5563] text-pretty whitespace-nowrap">
+                <Dot className="inline-block" />
+                You can see how <span className='text-blue-500 font-semibold'>useRef</span> is being initialized with <span className='font-semibold'>null</span>, meaning there is no interval running initially.
+                <br />
+                <Dot className="inline-block" />
+                <span className='font-semibold'>&lt;number | null&gt;</span> type means <span className='font-semibold'>intervalRef.current</span>. will hold either:
+                <br />
+                <div className='px-8'>
+                  <Plus className='inline-block size-3' />
+                  <span> A number (the interval ID from <span className='font-semibold'>setInterval</span>)</span>
+                  <br />
+                  <Plus className='inline-block size-3' />
+                  <span> <span className='font-semibold'>null</span> (if no interval is running)</span>
+                </div>
+              </p>
             </div>
 
-            <div className='bg-blue-100 p-4 rounded-br-lg max-lg:rounded-b-[2rem] lg:rounded-r-[2rem] overflow-auto max-h-[30rem] scrollbar-hide'>
-              <h1>Current: {count}</h1>
-              <h2>Previous: {prevCountRef.current}</h2>
-              <button onClick={() => setCount(count + 1)}>Increase</button>
+            <div className='p-4 rounded-br-lg max-lg:rounded-b-[2rem] lg:rounded-r-[2rem] overflow-auto max-h-[30rem] scrollbar-hide border border-gray-300'>
+              <div className='mt-2 text-xl/7 font-medium tracking-tight text-brand-950 max-lg:text-center'>Persistent Reference</div>
+              <div className='mt-5 flex items-center justify-center'>
+                <div className='px-4'>
+                  <h1><span className='font-semibold'>Current:</span> {counting}</h1>
+                  <h2><span className='font-semibold'>Previous:</span> {prevCountRef.current}</h2>
+                </div>
+                <button className='px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full' onClick={() => setCounting(counting + 1)}>Increase</button>
+              </div>
+
+              <div className="relative min-h-[25rem] w-full grow mb-20">
+                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-lg bg-gray-900 shadow-2xl">
+                  <div className="flex bg-gray-800/40 ring-1 ring-white/5">
+                    <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
+                      <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
+                        countHistory.tsx
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="overflow-hidden">
+                    <div className="max-h-[30rem]">
+                      <SyntaxHighlighter
+                        language="typescript"
+                        style={{
+                          ...oneDark,
+                          'pre[class*="language-"]': {
+                            ...oneDark['pre[class*="language-"]'],
+                            background: "transparent",
+                            overflow: "hidden",
+                          },
+                          'code[class*="language-"]': {
+                            ...oneDark['code[class*="language-"]'],
+                            background: "transparent",
+                          },
+                        }}
+                      >
+                        {countHistory}
+                      </SyntaxHighlighter>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p className="justify-center text-left text-base/7 text-[#4b5563] text-pretty whitespace-nowrap">
+                <Dot className="inline-block" />
+                You can see how <span className='text-blue-500 font-semibold'>useRef</span> is being initialized with <span className='font-semibold'>null</span>, meaning there is no interval running initially.
+                <br />
+
+                <span className='font-semibold'>A. Tracking Previous Values</span>
+                <br />
+                <div className='px-8'>
+                  <Plus className='inline-block size-3' />
+                  <span>  Used in text editors, forms, or drawing apps to track previous states for undo/history feature.</span>
+                  <br />
+                  <Plus className='inline-block size-3' />
+                  <span> Useful for UI updates that depend on previous state (e.g., animations, transitions).</span>
+                </div>
+
+                <span className='font-semibold'>B. Detecting Changes for Comparison</span>
+                <br />
+                <div className='px-8'>
+                  <Plus className='inline-block size-3' />
+                  <span> Stock price updates is an excellent example for this - It can show how a price changed compared to the previous update.</span>
+                </div>
+
+              </p>
             </div>
           </div>
 
