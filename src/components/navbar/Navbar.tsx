@@ -10,7 +10,8 @@ const hook: string[] = [
   "useMemo_useCallback",
   "useReducer",
   "useState_prop",
-  "useLayoutEffect"
+  "useLayoutEffect",
+  'useImperativeHandle'
 ];
 const TypeScript: string[] = [
   "Generics",
