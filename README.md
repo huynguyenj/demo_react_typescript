@@ -48,3 +48,18 @@ export default tseslint.config({
   },
 })
 ```
+
+```js
+//thanhnnse182333
+
+  additional packages:
+  npm install tailwind-scrollbar-hide
+  npm install react-copy-to-clipboard
+  npm install --save-dev @types/react-copy-to-clipboard
+  npm i axios
+  npm install clsx tailwind-merge
+  npm install lucide-react
+  npm install  react-syntax-highlighter
+  npm install -D @types/react-syntax-highlighter
+  
+```
