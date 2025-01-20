@@ -1,4 +1,4 @@
-import React, { useId, useRef, useState } from "react";
+import { useId,  useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./UseId.css";
@@ -48,7 +48,6 @@ function UseId() {
   const id1 = useId();
   const id2 = useId();
   const [count, setCount] = useState<number>(0);
-  const elementRef = useRef<HTMLElement>();
 
   const handleCount = (id: string): void => {
     setCount((prev) => prev + 1);

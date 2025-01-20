@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useState } from "react";
+import {useState } from "react";
 
 type AllowedTypes = "number" | "string" | "boolean" | "object";
 

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import './UseImperativeHandle.css'
 import Video from './VideoUseImperativeHandle'
 import VideoNotUseImperativeHandle from './VideoNotUseImperativeHandle';
