@@ -13,6 +13,7 @@ import UseLayoutEffectExample from './pages/reactHook/useLayoutEffect/UseLayoutE
 import UseImperativeHandle from './pages/reactHook/useImperativeHandle/UseImperativeHandle'
 import Generics from './pages/typeScript/generics/Generics'
 import TypeAnnotations_Interface_Type from './pages/typeScript/typeAnotations_interface_type/TypeAnotations_Interface_Type'
+import UseId from './pages/reactHook/useId/UseId'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path='/useImperativeHandle' element={<UseImperativeHandle/>}></Route>
           <Route path='/Type_Anotations_Interface_Type' element={<TypeAnnotations_Interface_Type/>}></Route>
           <Route path='/Generics' element={<Generics/>}></Route>
+          <Route path='/useId' element={<UseId/>}></Route>
         </Routes>     
 
     </>

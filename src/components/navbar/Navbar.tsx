@@ -11,7 +11,8 @@ const hook: string[] = [
   "useReducer",
   "useState_prop",
   "useLayoutEffect",
-  'useImperativeHandle'
+  'useImperativeHandle',
+  "useId"
 ];
 const TypeScript: string[] = [
   "Generics",
@@ -60,7 +61,6 @@ function Navbar() {
                   {hook.map((e) => (
                     <div className="items">
                       <Link to={`${e}`}>{e}</Link>
-                      <hr />
                     </div>
                   ))}
                 </div>
@@ -80,7 +80,7 @@ function Navbar() {
                   {TypeScript.map((e) => (
                     <div className="items">
                       <Link to={`${e}`}>{e}</Link>
-                      <hr />
+                      {/* <hr /> */}
                     </div>
                   ))}
                 </div>

@@ -33,6 +33,19 @@
 
       }
       }
+      .demo_code_screen{
+            width: 50%;
+            aspect-ratio: 5/4;
+            overflow-y: scroll;
+            h3{
+                  color: var(--front-clr);
+                  font-weight: 600;
+                  padding: 1rem;
+                  background: var(--front-clr2);
+                  margin-bottom: -7px;
+                  border-radius: 10px 10px 0 0;
+            }
+      }
 
 }
 .union_enum_container.lighten{
@@ -46,7 +59,10 @@
 }
 .union_enum_mini{
       /* background: var(--front-clr3); */
+      display: flex;
+      padding: 1rem;
       padding: 1.5rem;
+      gap: 4rem;
       h1{
             font-size: 2rem;
             /* color: var(--front-clr2); */
