@@ -53,6 +53,8 @@ export default tseslint.config({
 //thanhnnse182333
 
   additional packages:
+  npm install -D tailwindcss postcss autoprefixer
+  npx tailwindcss init -p
   npm install tailwind-scrollbar-hide
   npm install react-copy-to-clipboard
   npm install --save-dev @types/react-copy-to-clipboard

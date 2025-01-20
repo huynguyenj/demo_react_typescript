@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { MaxWidthWrapper } from './extras/max-width-wrapper';
 import { Heading } from './extras/heading';
-import { BellRing, ChevronDown, Copy, Dot } from 'lucide-react';
+import { ArrowBigUp, BellRing, ChevronDown, Copy, Dot } from 'lucide-react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
@@ -25,7 +25,7 @@ interface User {
   }
 }
 
-const UseEffects: React.FC = () => {
+const UseEffect_useRef: React.FC = () => {
 
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
@@ -757,4 +757,4 @@ const UseEffects: React.FC = () => {
   )
 }
 
-export default UseEffects;
+export default UseEffect_useRef;
