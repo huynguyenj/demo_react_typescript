@@ -40,25 +40,25 @@ function ShippingForm(props: ShippingFormProps) {
   return (
     <form className='shipping-form' onSubmit={handleSubmit}>
       <p><b>Note: <code>ShippingForm</code> is artificially slowed down!</b></p>
-      <label className='number-of-items-container'>
+      <label className='number-of-items-container label'>
         Number of items:
-        <button type="button" onClick={decreaseCount}>–</button>
+        <button className='button' type="button" onClick={decreaseCount}>–</button>
         {count}
-        <button type="button" onClick={increaseCount}>+</button>
+        <button className='button' type="button" onClick={increaseCount}>+</button>
       </label>
-      <label className='shipping-label'>
+      <label className='shipping-label label'>
         Street:
-        <input name="street" placeholder='Enter street' />
+        <input className='input' name="street" placeholder='Enter street' />
       </label>
-      <label className='shipping-label'>
+      <label className='shipping-label label'>
         City:
-        <input name="city" placeholder='Enter city'/>
-      </label>
-      <label className='shipping-label'>
+        <input className='input' name="city" placeholder='Enter city'/>
+      </label> 
+      <label className='shipping-label label'>
         Postal code:
-        <input name="zipCode" placeholder='Enter Postal code' style={{marginBottom:"1rem"}}/>
+        <input className='input' name="zipCode" placeholder='Enter Postal code' style={{marginBottom:"1rem"}}/>
       </label>
-      <button type="submit">Submit</button>
+      <button className='button' type="submit">Submit</button>
     </form>
   );
 }

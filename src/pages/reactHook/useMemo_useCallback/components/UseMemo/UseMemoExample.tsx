@@ -24,14 +24,17 @@ export default function UseMemoExample() {
   return (
     <>
       {/* Tabs */}
-      <button className='tab-btn' onClick={function() { setTab('all'); }}>All</button>
-      <button className='tab-btn' onClick={function() { setTab('active'); }}>Active</button>
-      <button className='tab-btn' onClick={function() { setTab('completed'); }}>Completed</button>
+      <div className='button-container'>
+      <button className='tab-btn button' onClick={function() { setTab('all'); }}>All</button>
+      <button className='tab-btn button' onClick={function() { setTab('active'); }}>Active</button>
+      <button className='tab-btn button' onClick={function() { setTab('completed'); }}>Completed</button>
+      </div>
       <br />
 
       {/* Dark Mode Toggle */}
-      <label>
+      <label className='label'>
         <input
+          className='input'
           type="checkbox"
           checked={isDark}
           onChange={function(e) { setIsDark(e.target.checked); }}
@@ -41,14 +44,14 @@ export default function UseMemoExample() {
       <hr />
 
       {/* New Todo Input and Create Button */}
-      <div className='create-container'>
-        <input className='create-input'
+      <div className='create-container div'>
+        <input className='create-input input'
           type="text"
           placeholder="Enter a new todo"
           value={newTodoText}
           onChange={function(e) { setNewTodoText(e.target.value); }}
         />
-        <button className='create-btn' onClick={handleCreateTodo}>Create</button>
+        <button className='create-btn button' onClick={handleCreateTodo}>Create</button>
       </div>
 
       {/* Todo List */}

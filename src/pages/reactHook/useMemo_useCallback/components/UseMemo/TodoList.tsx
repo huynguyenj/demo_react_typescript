@@ -13,17 +13,17 @@ function TodoList({todos, theme, tab}: TodoListProps) {
     }, [todos, tab]);
 
     return (
-        <div className={theme}>
+        <div className={`div ${theme}`}>
             <p>
                 <b>
                     Note: <code>filterTodos</code> is artificially slowed down!
                 </b>
             </p>
-            <ul>
+            <ul className="ul">
                 {visibleTodos.map(function(todo) {
                     return (
-                        <li key={todo.id}>
-                            {todo.completed ? <s>{todo.text}</s>: todo.text}
+                        <li className="li" key={todo.id}>
+                            {todo.completed ? <s className="s">{todo.text}</s>: todo.text}
                         </li>
                     );
                 })}

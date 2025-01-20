@@ -1,16 +1,7 @@
-* {
-  min-height: auto;
-  user-select: none;
-  margin: 0;
-  padding: 0;
+.h1 {
+  text-align: center;
+  font-size: 32px;
 }
-/* General Reset */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
-
 /* Light Theme */
 .light {
   background-color: #ffffff;
@@ -24,7 +15,7 @@ body {
 }
 
 /* App Container */
-div {
+.div {
   padding: 1rem;
   max-width: 600px;
   margin: 2rem auto;
@@ -33,7 +24,7 @@ div {
 }
 
 /* Buttons */
-button {
+.button {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -44,34 +35,34 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.button:hover {
   background-color: #0056b3;
 }
 
 /* Active Button State */
-button.active {
+.button.active {
   background-color: #0056b3;
 }
 
 /* Dark Mode Toggle */
-label {
+.label {
   font-size: 1rem;
   display: flex;
   align-items: center;
   margin-top: 1rem;
 }
 
-input[type="checkbox"] {
+.input[type="checkbox"] {
   margin-right: 0.5rem;
 }
 
 /* Todo List */
-ul {
+.ul {
   list-style: none;
   padding: 0;
 }
 
-li {
+.li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -79,12 +70,12 @@ li {
   border-bottom: 1px solid #ddd;
 }
 
-li:last-child {
+.li:last-child {
   border-bottom: none;
 }
 
 /* Completed Todos */
-s {
+.s {
   color: #777;
   font-style: italic;
 }
@@ -113,6 +104,10 @@ s {
   padding: 0.5rem;
   border: 1px solid #c4c4c4;
   border-radius: 5px 0 0 5px;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
 }
 /* Style useCallback */
 .shipping-form {

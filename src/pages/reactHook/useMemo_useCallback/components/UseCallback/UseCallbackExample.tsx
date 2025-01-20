@@ -10,8 +10,9 @@ export default function UseCallbackExample() {
 
   return (
     <>
-      <label>
+      <label className='label'>
         <input
+          className='input'
           type="checkbox"
           checked={isDark}
           onChange={handleThemeChange}

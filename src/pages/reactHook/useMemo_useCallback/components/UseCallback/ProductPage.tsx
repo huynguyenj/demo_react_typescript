@@ -22,7 +22,7 @@ export default function ProductPage(props: ProductPageProps) {
   }, [productId, referrer]);
 
   return (
-    <div className={theme}>
+    <div className={`div ${theme}`}>
       <ShippingForm onSubmit={memoizedHandleSubmit} />
     </div>
   );
