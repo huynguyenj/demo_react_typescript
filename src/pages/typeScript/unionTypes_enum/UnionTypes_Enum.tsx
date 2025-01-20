@@ -20,7 +20,7 @@ const listStudent: student[] = [
   { id: 5, name: "Jennie" },
 ];
 
-type theme = "light" | "dark";
+type theme = "lighten" | "darker";
 
 function UnionTypes_Enum() {
   const inputElement = useRef<HTMLInputElement>(null);
@@ -28,7 +28,7 @@ function UnionTypes_Enum() {
     role: UserRole | null;
     isVisible: boolean;
   }>();
-  const [theme, setTheme] = useState<theme>("light");
+  const [theme, setTheme] = useState<theme>("lighten");
 
   const updateRoleValue = (): void => {
     if (inputElement.current) {
@@ -51,18 +51,31 @@ function UnionTypes_Enum() {
             break;
           default:
             setDisplay({ role: null, isVisible: false });
-            alert(`Your ${inputValue} is not suitable please try agin!`);
+            setTheme('lighten')
+            alert(`Your ${inputValue} is not suitable please try again!`);
         }
       }
     }
   };
   const changeTheme = (): void => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((prev) => (prev === "lighten" ? "darker" : "lighten"));
   };
   return (
     <div className={`union_enum_container ${theme}`}>
+      <div className="enum_union_explaination">
+        <h1>What is <span>Enum</span> and <span>Union</span></h1>
+        <p className="Enum_explain">
+          <h2>Enum</h2>
+        Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript. 
+        Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums.
+        </p>
+        <p className="union_explain">
+          <h2>Union</h2>
+        Union types are used when a value can be more than a single type.
+        </p>
+      </div>
       <div className="union_enum_mini">
-        <h1>Enum Union type demo</h1>
+        <h1>Enum Union demo</h1>
         <div className="input_box_union">
           <input
             type="text"
@@ -80,7 +93,7 @@ function UnionTypes_Enum() {
             {display?.isVisible ? (
               <div className="union_enum_btn_theme">
                 <button className="theme_btn" onClick={changeTheme}>
-                  Change color: {theme == "light" ? "dark" : "light"}{" "}
+                  Change color: {theme == "lighten" ? "dark" : "light"}{" "}
                 </button>
               </div>
             ) : (
@@ -90,7 +103,7 @@ function UnionTypes_Enum() {
         </div>
         {display?.isVisible && display.role === UserRole.ADMIN ? (
           <>
-            <div className="listStu_admin">
+            <div className={`listStu_admin ${theme}`}>
               <table>
                 <thead>
                   <tr>

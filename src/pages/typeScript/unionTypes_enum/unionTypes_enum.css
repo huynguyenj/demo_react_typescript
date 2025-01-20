@@ -11,21 +11,45 @@
 }
 .union_enum_container{
       padding: 2rem;
-      min-height: 87.5vh;
-}
-.union_enum_container.light{
-      background: var(--union_enum_bg);
+      min-height: 100vh;
+      .enum_union_explaination{
+            text-align: center;
+            margin: 1rem 7rem;
+            h1{
+                  text-align: center;
+                  margin: 1rem 0;
+                  font-size: clamp(3rem,4vw,5rem);
+                  font-weight: 700;
+                  span{
+                        color: var(--nav-bg);
+                        font-weight: 600;
+                  }
+            }
+      h2{
+            font-size: clamp(1.5rem,2vw,3rem);
+            color: var(--nav-bg);
+            font-weight: 500;
+            margin: 1rem;
+
+      }
+      }
 
 }
-.union_enum_container.dark{
+.union_enum_container.lighten{
+      background: var(--content_bg);
+
+}
+.union_enum_container.darker{
       background: var(--front-clr2);
+      color: var(--content_bg);
 
 }
 .union_enum_mini{
       /* background: var(--front-clr3); */
       padding: 1.5rem;
       h1{
-            color: var(--front-clr);
+            font-size: 2rem;
+            /* color: var(--front-clr2); */
             text-align: center;
             
       }
@@ -35,7 +59,6 @@
       position: relative;
       width: clamp(18rem,30vw,40rem);
       aspect-ratio: 5/1;
-      /* background: var(--li-bg); */
       .inputField{
             padding: 1rem;
             width: 100%;
@@ -43,7 +66,6 @@
             background: transparent;
             border-radius: 1rem;
             outline: none;
-            color: var(--front-clr);
             font-size: clamp(0.7rem,1.2vw,2rem);
             overflow: hidden;
       }
@@ -54,7 +76,6 @@
             padding: 0.5rem 0.5rem; 
             font-size: clamp(0.7rem,1.2vw,2rem);
             pointer-events: none;
-            color: var(--front-clr);
             transition: 0.3s ease;
             line-height: 10px;
       }
@@ -67,12 +88,13 @@
       border-left: 2px solid var(--border_clr);
       border-right: 2px solid var(--border_clr);
 }
-.union_enum_container .input_box_union .inputField:valid~.label_inputField.light,
-.union_enum_container .input_box_union .inputField:focus~.label_inputField.light{
-      background: var(--union_enum_bg);
+.union_enum_container .input_box_union .inputField:valid~.label_inputField.lighten,
+.union_enum_container .input_box_union .inputField:focus~.label_inputField.lighten{
+      background: var(--content_bg);
 }
-.union_enum_container .input_box_union .inputField:valid~.label_inputField.dark,
-.union_enum_container .input_box_union .inputField:focus~.label_inputField.dark{
+.union_enum_container .input_box_union .inputField:valid~.label_inputField.darker,
+.union_enum_container .input_box_union .inputField:focus~.label_inputField.darker{
+      color: var(--front-clr);
       background: var(--front-clr2);
 }
 
@@ -113,11 +135,17 @@
       }
       th,td{
       padding: 1rem;
-      border: 1px solid var(--front-clr);
+      border: 1px solid var(--front-clr2);
       text-align: left;
-      color: var(--front-clr);
+      /* color: var(--front-clr2); */
       }
       tr:nth-child(even){
             background: var(--nav-bg);
       }
+}
+.union_enum_container .union_enum_mini .listStu_admin.darker{
+      th,td{
+      border: 1px solid var(--content_bg); 
+      }
+   
 }
