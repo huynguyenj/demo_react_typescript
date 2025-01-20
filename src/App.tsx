@@ -1,4 +1,3 @@
-
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/navbar/Navbar'
@@ -16,6 +15,7 @@ function App() {
           </Route>
           <Route path='/UnionType_Enum' element={<UnionTypes_Enum/>}></Route>
         </Routes>     
+
     </>
   )
 }
