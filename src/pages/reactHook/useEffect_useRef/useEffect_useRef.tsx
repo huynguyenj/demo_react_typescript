@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { MaxWidthWrapper } from './extras/max-width-wrapper';
 import { Heading } from './extras/heading';
-import { ArrowBigUp, BellRing, ChevronDown, Copy, Dot, Plus } from 'lucide-react';
+import { BellRing, ChevronDown, Copy, Dot, Plus } from 'lucide-react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
@@ -64,11 +64,9 @@ const UseEffect_useRef: React.FC = () => {
 
   const stateChange = `useEffect(() => {
     if (isSubscribed) {
-        console.log
-        ('Subscribe');
+        console.log('Subscribe');
     } else {
-        console.log
-        ('Subscribed');
+        console.log('Subscribed');
     }
     return () => {
         if (isSubscribed) {
@@ -104,6 +102,7 @@ const UseEffect_useRef: React.FC = () => {
 
   const toggleCopy = () => {
     setIsCopied(prevState => !prevState);
+    setTimeout(() => setIsCopied(false), 100);
   };
 
   // Data Fetching
@@ -144,7 +143,7 @@ const UseEffect_useRef: React.FC = () => {
     // Cleanup function to log unsubscribe action
     return () => {
       if (isSubscribed) {
-        console.log('Cleaning up: Unsubscribed from channel');
+        console.log('Cleaning up');
       }
     };
   }, [isSubscribed]);
@@ -424,7 +423,7 @@ const prevCountRef = useRef(0);
                 </div>
                 <div className="overflow-hidden">
                   <div className="max-h-[30rem] overflow-x-auto overflow-y-hidden">
-                    <CopyToClipboard text={dataFetching}>
+                    <CopyToClipboard text={eventListener}>
                       <button
                         className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
                         onClick={toggleCopy}
@@ -477,7 +476,7 @@ const prevCountRef = useRef(0);
                 </div>
                 <div className="overflow-hidden">
                   <div className="max-h-[30rem] overflow-x-auto overflow-y-hidden">
-                    <CopyToClipboard text={dataFetching}>
+                    <CopyToClipboard text={timerIntervals}>
                       <button
                         className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
                         onClick={toggleCopy}
@@ -565,6 +564,17 @@ const prevCountRef = useRef(0);
 
                     <div className="overflow-hidden">
                       <div className="max-h-[30rem]">
+                        <CopyToClipboard text={stateChange}>
+                          <button
+                            className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
+                            onClick={toggleCopy}
+                          >
+                            <div className='flex items-center'>
+                              <Copy className="text-white mr-2 size-4 text-opacity-50" />
+                              {isCopied ? 'copied!' : 'copy'}
+                            </div>
+                          </button>
+                        </CopyToClipboard>
                         <SyntaxHighlighter
                           language="typescript"
                           style={{
@@ -665,6 +675,17 @@ const prevCountRef = useRef(0);
 
                     <div className="overflow-hidden">
                       <div className="max-h-[30rem]">
+                        <CopyToClipboard text={domManipulation}>
+                          <button
+                            className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
+                            onClick={toggleCopy}
+                          >
+                            <div className='flex items-center'>
+                              <Copy className="text-white mr-2 size-4 text-opacity-50" />
+                              {isCopied ? 'copied!' : 'copy'}
+                            </div>
+                          </button>
+                        </CopyToClipboard>
                         <SyntaxHighlighter
                           language="typescript"
                           style={{
@@ -746,6 +767,17 @@ const prevCountRef = useRef(0);
 
                     <div className="overflow-hidden">
                       <div className="max-h-[30rem]">
+                        <CopyToClipboard text={conditionalEffects}>
+                          <button
+                            className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
+                            onClick={toggleCopy}
+                          >
+                            <div className='flex items-center'>
+                              <Copy className="text-white mr-2 size-4 text-opacity-50" />
+                              {isCopied ? 'copied!' : 'copy'}
+                            </div>
+                          </button>
+                        </CopyToClipboard>
                         <SyntaxHighlighter
                           language="typescript"
                           style={{
@@ -782,6 +814,17 @@ const prevCountRef = useRef(0);
 
                     <div className="overflow-hidden">
                       <div className="max-h-[30rem]">
+                        <CopyToClipboard text={stateSync}>
+                          <button
+                            className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
+                            onClick={toggleCopy}
+                          >
+                            <div className='flex items-center'>
+                              <Copy className="text-white mr-2 size-4 text-opacity-50" />
+                              {isCopied ? 'copied!' : 'copy'}
+                            </div>
+                          </button>
+                        </CopyToClipboard>
                         <SyntaxHighlighter
                           language="typescript"
                           style={{
@@ -853,6 +896,20 @@ const prevCountRef = useRef(0);
               </li>
             ))}
           </ul>
+
+          <div className='rounded-lg bg-[#282c34] mb-20'>
+            <p className="rounded-lg p-8 mb-6 justify-start text-left text-base/7 text-[#abb2bf] text-pretty whitespace-nowrap">
+              <Dot className="inline-block" />
+              Imagine you want to write <span className='font-semibold'>"I love my car"</span> on the car, but afraid it'll make the car ugly, so you use a sticky note to write <span className='font-semibold'>"I love my car"</span>
+              {" "}
+              and stick it on instead!
+              <br />
+              Using <span className='text-[#61afef] font-semibold'>useRef</span> is a way to tell React:
+              {" "}
+              <span className="font-semibold text-[#abb2bf]">
+                "Don't re-render when this value changes!"</span>
+            </p>
+          </div>
         </MaxWidthWrapper>
       </section>
 
@@ -861,7 +918,7 @@ const prevCountRef = useRef(0);
           <div className='grid grid-cols-1 gap-4 sm:grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 mb-20'>
             <div className='p-4 rounded-tl-lg max-lg:rounded-t-[2rem] lg:rounded-l-[2rem] overflow-auto max-h-[30rem] scrollbar-hide border border-gray-300'>
               <div className='mt-2 text-xl/7 font-medium tracking-tight text-brand-950 max-lg:text-center'>Hey! No re-rendering!</div>
-              <div className='mt-6 flex items-center justify-center'>
+              <div className='mt-7 flex items-center justify-center'>
                 <div className='px-4'><span className='font-semibold'>Count: </span>{stateCount}</div>
                 <br />
                 <button className='bg-blue-500 px-4 py-2 text-white rounded-full' onClick={handleClick}>Click me!</button>
@@ -879,6 +936,17 @@ const prevCountRef = useRef(0);
 
                   <div className="overflow-hidden">
                     <div className="max-h-[30rem]">
+                      <CopyToClipboard text={clickCounting}>
+                        <button
+                          className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
+                          onClick={toggleCopy}
+                        >
+                          <div className='flex items-center'>
+                            <Copy className="text-white mr-2 size-4 text-opacity-50" />
+                            {isCopied ? 'copied!' : 'copy'}
+                          </div>
+                        </button>
+                      </CopyToClipboard>
                       <SyntaxHighlighter
                         language="typescript"
                         style={{
@@ -928,6 +996,17 @@ const prevCountRef = useRef(0);
 
                   <div className="overflow-hidden">
                     <div className="max-h-[30rem]">
+                      <CopyToClipboard text={focusAuto}>
+                        <button
+                          className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
+                          onClick={toggleCopy}
+                        >
+                          <div className='flex items-center'>
+                            <Copy className="text-white mr-2 size-4 text-opacity-50" />
+                            {isCopied ? 'copied!' : 'copy'}
+                          </div>
+                        </button>
+                      </CopyToClipboard>
                       <SyntaxHighlighter
                         language="typescript"
                         style={{
@@ -972,6 +1051,17 @@ const prevCountRef = useRef(0);
 
                   <div className="overflow-hidden">
                     <div className="max-h-[30rem]">
+                      <CopyToClipboard text={timerIntervals}>
+                        <button
+                          className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
+                          onClick={toggleCopy}
+                        >
+                          <div className='flex items-center'>
+                            <Copy className="text-white mr-2 size-4 text-opacity-50" />
+                            {isCopied ? 'copied!' : 'copy'}
+                          </div>
+                        </button>
+                      </CopyToClipboard>
                       <SyntaxHighlighter
                         language="typescript"
                         style={{
@@ -1033,6 +1123,17 @@ const prevCountRef = useRef(0);
 
                   <div className="overflow-hidden">
                     <div className="max-h-[30rem]">
+                      <CopyToClipboard text={countHistory}>
+                        <button
+                          className="bg-transparent absolute top-1 text-opacity-50 right-3 bg-gray-800 text-white p-1 rounded-md shadow-md"
+                          onClick={toggleCopy}
+                        >
+                          <div className='flex items-center'>
+                            <Copy className="text-white mr-2 size-4 text-opacity-50" />
+                            {isCopied ? 'copied!' : 'copy'}
+                          </div>
+                        </button>
+                      </CopyToClipboard>
                       <SyntaxHighlighter
                         language="typescript"
                         style={{
