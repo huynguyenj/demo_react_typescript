@@ -50,9 +50,9 @@ function Navbar() {
       </div>
       <div className="navbar_content">
         <ul className="list_items">
-          <li>
-            <a href="">React Hooks</a>
-            <div className="item_content" onClick={() => handleChangeAngle(0)}>
+          <li className="item_content" onClick={() => handleChangeAngle(0)}>
+            <a>React Hooks</a>
+            <div>
               <DownArrow
                 sx={activeIndex === 0 ? activeStyle : nonactiveStyle}
               />
@@ -70,9 +70,9 @@ function Navbar() {
               )}
             </div>
           </li>
-          <li>
-            <a href="">Type Script</a>
-            <div className="item_content" onClick={() => handleChangeAngle(1)}>
+          <li className="item_content" onClick={() => handleChangeAngle(1)}>
+            <a>Type Script</a>
+            <div>
               <DownArrow
                 sx={activeIndex === 1 ? activeStyle : nonactiveStyle}
               />
