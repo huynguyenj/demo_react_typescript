@@ -11,6 +11,8 @@ import UseContext from './pages/reactHook/useContext/UseContext'
 import UseState_Prop from './pages/reactHook/useState_prop/UseState_Prop'
 import UseLayoutEffectExample from './pages/reactHook/useLayoutEffect/UseLayoutEffect'
 import UseImperativeHandle from './pages/reactHook/useImperativeHandle/UseImperativeHandle'
+import Generics from './pages/typeScript/generics/Generics'
+
 
 function App() {
 
@@ -29,6 +31,7 @@ function App() {
           <Route path='/useLayoutEffect' element={<UseLayoutEffectExample/>}></Route>
           <Route path='useImperativeHandle' element={<UseImperativeHandle/>}></Route>
           
+          <Route path='/Generics' element={<Generics/>}></Route>
         </Routes>     
 
     </>

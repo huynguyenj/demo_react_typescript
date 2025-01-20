@@ -109,6 +109,13 @@ function Home() {
             />
             <p> Interfaces define the structure of objects, ensuring the code adheres to specified formats</p>
             </div>
+            <div className="typescript_img4 ts">
+            <p> Generics allow you to define functions, classes, and interfaces with any data type but also restrict that single type throughout the process</p>
+            <img
+              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1647974388706/E680AVFvJ.png?auto=compress,format&format=webp"
+              alt="typescript_img"
+            />
+            </div>
           </div>
         </div>
       </div>
