@@ -13,7 +13,7 @@ function LightSwitch() {
   return (
     <div>
       <p>The light is {isOn ? 'On' : 'Off'}</p>
-      <button onClick={toggleLight}>Toggle Light</button>
+      <button style={{background:'#f76b8a',borderRadius:'10px',padding:'1rem'}} onClick={toggleLight}>Toggle Light</button>
     </div>
   );
 }
@@ -40,7 +40,7 @@ function UseContext() {
           const backgroundColor = context?.isOn ? 'white' : 'black';
           const color = context?.isOn ? 'black' : 'white';
           return (
-            <div style={{ backgroundColor, color, height: '100vh', textAlign: 'center' }}>
+            <div style={{ backgroundColor, color, minHeight: '90vh', textAlign: 'center',padding:'2rem' }}>
               <h1>Light Switch Demo</h1>
               <LightSwitch />
             </div>
