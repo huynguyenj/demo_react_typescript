@@ -1,7 +1,7 @@
 .box {
     background-color: rgb(232, 235, 234);
     padding: 0 20px; 
-    margin: 0 auto; 
+    margin: 1rem auto; 
     width: 40%;
     border: 1px solid black;
 }
