@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import "./unionTypes_enum.css";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 enum UserRole {
   ADMIN = "admin",
@@ -7,6 +9,12 @@ enum UserRole {
   GUEST = "guest",
 }
 
+const enumUse = `enum UserRole {
+  ADMIN = "admin",
+  USER = "user",
+  GUEST = "guest",
+}
+`
 type student = {
   id: number;
   name: string;
@@ -20,6 +28,7 @@ const listStudent: student[] = [
   { id: 5, name: "Jennie" },
 ];
 
+const unionUse = `type theme = "lighten" | "darker";`
 type theme = "lighten" | "darker";
 
 function UnionTypes_Enum() {
@@ -57,6 +66,48 @@ function UnionTypes_Enum() {
       }
     }
   };
+  const codeString = `
+  function UnionTypes_Enum() {
+  const inputElement = useRef<HTMLInputElement>(null);
+  const [display, setDisplay] = useState<{
+    role: UserRole | null;
+    isVisible: boolean;
+  }>();
+
+const [theme, setTheme] = useState<theme>("lighten");
+
+const updateRoleValue = (): void => {
+  if (inputElement.current) {
+    const inputValue = inputElement.current.value.trim().toLowerCase();
+    inputElement.current.value = "";
+
+    if (inputValue) {
+      switch (inputValue) {
+        case UserRole.ADMIN:
+          setDisplay({ role: UserRole.ADMIN, isVisible: true });
+          alert(\`Welcome \${inputValue}\`);
+          break;
+        case UserRole.USER:
+          setDisplay({ role: UserRole.USER, isVisible: true });
+          alert(\`Welcome \${inputValue}\`);
+          break;
+        case UserRole.GUEST:
+          setDisplay({ role: UserRole.GUEST, isVisible: false });
+          alert(\`Welcome \${inputValue}\`);
+          break;
+        default:
+          setDisplay({ role: null, isVisible: false });
+          setTheme('lighten');
+          alert(\`Your \${inputValue} is not suitable please try again!\`);
+      }
+    }
+  }
+};
+const changeTheme = (): void => {
+    setTheme((prev) => (prev === "lighten" ? "darker" : "lighten"));
+  };
+`;
+
   const changeTheme = (): void => {
     setTheme((prev) => (prev === "lighten" ? "darker" : "lighten"));
   };
@@ -75,6 +126,20 @@ function UnionTypes_Enum() {
         </p>
       </div>
       <div className="union_enum_mini">
+        <div className="demo_code_screen">
+          <h3>Enum use</h3>
+        <SyntaxHighlighter language="typescript" style={{...vscDarkPlus}}>
+            {enumUse}
+          </SyntaxHighlighter>
+          <h3>Union use</h3>
+        <SyntaxHighlighter language="typescript" style={{...vscDarkPlus}}>
+            {unionUse}
+          </SyntaxHighlighter>
+          <SyntaxHighlighter language="typescript" style={{...vscDarkPlus}}>
+            {codeString}
+          </SyntaxHighlighter>
+        </div>
+        <div>
         <h1>Enum Union demo</h1>
         <div className="input_box_union">
           <input
@@ -125,6 +190,8 @@ function UnionTypes_Enum() {
         ) : (
           <></>
         )}
+        </div>
+       
       </div>
     </div>
   );
