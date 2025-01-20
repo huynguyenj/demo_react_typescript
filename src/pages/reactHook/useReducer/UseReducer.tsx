@@ -83,8 +83,8 @@ const UseReducer: React.FC = () => {
 
   return (   
     <div className="box">
-        <h1 className="title">To Do</h1>
-        <div style={{display: 'flex', alignItems: 'center', marginBottom: '20px'}}>
+        <h1 className="title">To Do List</h1>
+        <div style={{display: 'flex', alignItems: 'center', marginBottom: '10px', borderRadius: '1rem'}}>
         <input className="input"
           value={job}
           ref={inputRef}
@@ -99,7 +99,7 @@ const UseReducer: React.FC = () => {
         <ul>
           {jobs.map((job: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined, index: React.Key | null | undefined) => (
             <li className="list" key={index}>
-              {job} <span onClick={() => dispatch(deleteJob(index))} style={{cursor:'pointer'}}>&times;</span>
+              - {job} <span className="deleteButton" onClick={() => dispatch(deleteJob(index))}>&times;</span>
             </li>
           ))}
           
