@@ -9,6 +9,7 @@ import UseReducer from './pages/reactHook/useReducer/UseReducer'
 import UseMemoAndUseCallback from './pages/reactHook/useMemo_useCallback/UseMemo_UseCallback'
 import UseContext from './pages/reactHook/useContext/UseContext'
 import UseState_Prop from './pages/reactHook/useState_prop/UseState_Prop'
+import UseLayoutEffectExample from './pages/reactHook/useLayoutEffect/UseLayoutEffect'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/useMemo_useCallback' element={<UseMemoAndUseCallback/>}></Route>
           <Route path="/useContext" element={<UseContext />} />
           <Route path='/useState_prop' element={<UseState_Prop/>}></Route>
+          <Route path='/useLayoutEffect' element={<UseLayoutEffectExample/>}></Route>
           
         </Routes>     
 
