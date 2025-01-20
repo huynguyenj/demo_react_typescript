@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
@@ -184,6 +184,59 @@ const UseEffect_useRef: React.FC = () => {
       setShowModal(false);
     }
   }, [increment]);
+
+  //////////////////////////////////////////////////////
+
+  const clickCount = useRef(0);
+  const [stateCount, setStateCount] = useState(0);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [seconds, setSeconds] = useState(1000000);
+  const intervalRef = useRef<number | null>(null);
+  const [counting, setCounting] = useState(0);
+  const prevCountRef = useRef(0);
+  // let intervalId;
+
+  function handleClick() {
+    setStateCount(stateCount + 1);
+    clickCount.current++
+
+    console.log('State: ', stateCount);
+    console.log('Ref: ', clickCount.current);
+  }
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    prevCountRef.current = count;
+  }, [count]);
+
+  //useRef timer
+
+  useEffect(() => {
+    intervalRef.current = window.setInterval(() => {
+      setSeconds((prev) => prev - 1);
+    }, 1000); return () => { if (intervalRef.current !== null) { clearInterval(intervalRef.current); } };
+  }, []);
+
+  const clickCounting =
+    `const clickCount = useRef(0);
+const [stateCount, setStateCount] = 
+useState(0);
+`
+
+  const focusClick = `const inputRef = 
+useRef<HTMLInputElement>(null);`
+
+  const intervalTimer =
+    `const [seconds, setSeconds] = 
+    useState(1000000);
+const intervalRef = useRef<number | 
+null>(null);
+`
 
   return (
     <>
@@ -751,6 +804,172 @@ const UseEffect_useRef: React.FC = () => {
 
             </div>
           </div>
+        </MaxWidthWrapper>
+      </section>
+
+      <section className="relative py-24 sm:py-32 bg-brand-25">
+        <MaxWidthWrapper className="text-center">
+          <div className="relative mx-auto text-center flex flex-col items-center gap-10">
+            <div>
+              <Heading className="">
+                <span>How to implement <span className='text-blue-500'>useRef</span> Showcase</span>
+                <br />
+                <span className="">Learning the ropes</span>
+              </Heading>
+            </div>
+
+            <p className="text-base/7 text-gray-600 max-w-prose text-center text-pretty">PingPanda is the easiest way to monitor your SaaS. Get instant notification for
+              {" "}
+              <span className="font-semibold text-gray-700">sales, new users, or any other events</span>
+              {" "}
+              sent directly to your Discord.</p>
+
+            <ul className="space-y-2 text-base/7 text-gray-600 text-left flex-col items-start">
+              {[
+                "Real-time Discord alerts for critical events",
+                "Buy once, use forever - Easy to Setup",
+                "Track sales, new users, or any other events",
+              ].map((item, index) => (
+                <li key={index} className="flex gap-1.5 items-center text-left">
+                  <Dot className="size-5 shrink-0 text-brand-700" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </MaxWidthWrapper>
+      </section>
+
+      <section>
+        <MaxWidthWrapper>
+          <div className='grid grid-cols-1 gap-4 sm:grid-cols-1 lg:grid-cols-2 lg:grid-rows-2'>
+            <div className='bg-blue-100 p-4 rounded-tl-lg max-lg:rounded-t-[2rem] lg:rounded-l-[2rem] overflow-auto max-h-[30rem] scrollbar-hide'>
+              <div className=''>
+                Count: {stateCount}
+                <br />
+                <button className='bg-blue-500 px-4 py-2 text-white rounded-lg mt-1' onClick={handleClick}>Click me!</button>
+              </div>
+
+              <div className="relative min-h-[25rem] w-full grow mb-6">
+                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-tl-xl rounded-tr-xl bg-gray-900 shadow-2xl">
+                  <div className="flex bg-gray-800/40 ring-1 ring-white/5">
+                    <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
+                      <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
+                        clickCounting.tsx
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="overflow-hidden">
+                    <div className="max-h-[30rem]">
+                      <SyntaxHighlighter
+                        language="typescript"
+                        style={{
+                          ...oneDark,
+                          'pre[class*="language-"]': {
+                            ...oneDark['pre[class*="language-"]'],
+                            background: "transparent",
+                            overflow: "hidden",
+                          },
+                          'code[class*="language-"]': {
+                            ...oneDark['code[class*="language-"]'],
+                            background: "transparent",
+                          },
+                        }}
+                      >
+                        {clickCounting}
+                      </SyntaxHighlighter>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div className='bg-blue-100 p-4 rounded-tr-lg max-lg:rounded-t-[2rem] lg:rounded-r-[2rem] overflow-auto max-h-[30rem] scrollbar-hide'>
+              <input ref={inputRef} placeholder="Start typing..." />
+
+              <div className="relative min-h-[25rem] w-full grow mb-6">
+                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-tl-xl rounded-tr-xl bg-gray-900 shadow-2xl">
+                  <div className="flex bg-gray-800/40 ring-1 ring-white/5">
+                    <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
+                      <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
+                        focusClick.tsx
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="overflow-hidden">
+                    <div className="max-h-[30rem]">
+                      <SyntaxHighlighter
+                        language="typescript"
+                        style={{
+                          ...oneDark,
+                          'pre[class*="language-"]': {
+                            ...oneDark['pre[class*="language-"]'],
+                            background: "transparent",
+                            overflow: "hidden",
+                          },
+                          'code[class*="language-"]': {
+                            ...oneDark['code[class*="language-"]'],
+                            background: "transparent",
+                          },
+                        }}
+                      >
+                        {focusClick}
+                      </SyntaxHighlighter>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className='bg-blue-100 p-4 rounded-bl-lg max-lg:rounded-b-[2rem] lg:rounded-l-[2rem] overflow-auto max-h-[30rem] scrollbar-hide'>
+              <h1>Time Left: {seconds}s</h1>
+
+              <div className="relative min-h-[25rem] w-full grow mb-6">
+                <div className="absolute bottom-0 left-10 right-10 top-10 overflow-hidden rounded-tl-xl rounded-tr-xl bg-gray-900 shadow-2xl">
+                  <div className="flex bg-gray-800/40 ring-1 ring-white/5">
+                    <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
+                      <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
+                        timerIntervals.tsx
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="overflow-hidden">
+                    <div className="max-h-[30rem]">
+                      <SyntaxHighlighter
+                        language="typescript"
+                        style={{
+                          ...oneDark,
+                          'pre[class*="language-"]': {
+                            ...oneDark['pre[class*="language-"]'],
+                            background: "transparent",
+                            overflow: "hidden",
+                          },
+                          'code[class*="language-"]': {
+                            ...oneDark['code[class*="language-"]'],
+                            background: "transparent",
+                          },
+                        }}
+                      >
+                        {intervalTimer}
+                      </SyntaxHighlighter>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className='bg-blue-100 p-4 rounded-br-lg max-lg:rounded-b-[2rem] lg:rounded-r-[2rem] overflow-auto max-h-[30rem] scrollbar-hide'>
+              <h1>Current: {count}</h1>
+              <h2>Previous: {prevCountRef.current}</h2>
+              <button onClick={() => setCount(count + 1)}>Increase</button>
+            </div>
+          </div>
+
+
         </MaxWidthWrapper>
       </section>
     </>
