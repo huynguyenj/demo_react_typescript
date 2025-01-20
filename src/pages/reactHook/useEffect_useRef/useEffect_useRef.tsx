@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { MaxWidthWrapper } from './extras/max-width-wrapper';
 import { Heading } from './extras/heading';
-import { ArrowBigUp, BellRing, ChevronDown, Copy, Dot } from 'lucide-react';
+import { BellRing, ChevronDown, Copy, Dot } from 'lucide-react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
@@ -182,6 +182,7 @@ const UseEffect_useRef: React.FC = () => {
       setShowModal(true);
     } else {
       setShowModal(false);
+      console.log(showModal)
     }
   }, [increment]);
 
@@ -194,7 +195,7 @@ const UseEffect_useRef: React.FC = () => {
 
   const [seconds, setSeconds] = useState(1000000);
   const intervalRef = useRef<number | null>(null);
-  const [counting, setCounting] = useState(0);
+  // const [counting, setCounting] = useState(0);
   const prevCountRef = useRef(0);
   // let intervalId;
 

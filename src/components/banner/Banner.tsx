@@ -1,4 +1,3 @@
-import React from 'react'
 import './Banner.css'
 import ReatIcon from '../../assets/react-icon-1024x911-edzubt1f.png'
 import TypeScriptIcon from '../../assets/png-clipart-angularjs-typescript-javascript-vue-js-others-blue-angle-thumbnail-removebg-preview.png'
