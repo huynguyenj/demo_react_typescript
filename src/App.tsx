@@ -12,6 +12,7 @@ import UseState_Prop from './pages/reactHook/useState_prop/UseState_Prop'
 import UseLayoutEffectExample from './pages/reactHook/useLayoutEffect/UseLayoutEffect'
 import UseImperativeHandle from './pages/reactHook/useImperativeHandle/UseImperativeHandle'
 import Generics from './pages/typeScript/generics/Generics'
+import TypeAnnotations_Interface_Type from './pages/typeScript/typeAnotations_interface_type/TypeAnotations_Interface_Type'
 
 
 function App() {
@@ -29,8 +30,8 @@ function App() {
           <Route path="/useContext" element={<UseContext />} />
           <Route path='/useState_prop' element={<UseState_Prop/>}></Route>
           <Route path='/useLayoutEffect' element={<UseLayoutEffectExample/>}></Route>
-          <Route path='useImperativeHandle' element={<UseImperativeHandle/>}></Route>
-          
+          <Route path='/useImperativeHandle' element={<UseImperativeHandle/>}></Route>
+          <Route path='/Type_Anotations_Interface_Type' element={<TypeAnnotations_Interface_Type/>}></Route>
           <Route path='/Generics' element={<Generics/>}></Route>
         </Routes>     
 
