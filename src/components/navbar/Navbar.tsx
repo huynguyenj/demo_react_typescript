@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import IconImage from "../../assets/images-removebg-preview.png";
-import { UpArrow, DownArrow } from "../MuiIcon/MuiIcon";
+import { DownArrow } from "../MuiIcon/MuiIcon";
 import { Link } from "react-router-dom";
 
 const hook: string[] = [
@@ -10,6 +10,7 @@ const hook: string[] = [
   "useMemo_useCallback",
   "useReducer",
   "useState_prop",
+  "useLayoutEffect"
 ];
 const TypeScript: string[] = [
   "Generics",
@@ -35,14 +36,11 @@ const nonactiveStyle: React.CSSProperties = {
 function Navbar() {
   const [activeIndex, setActiceIndex] = useState<number | null>(null);
 
-  const handleChangeAngle = useCallback(
-    (index: number) => {
+  const handleChangeAngle = (index: number) => {
       setActiceIndex((prev) => (prev === index ? null : index));
       console.log(activeIndex);
-    },
-    [activeIndex]
-  );
-
+    };
+ 
   return (
     <div className="navbar_container">
       <div className="icon">

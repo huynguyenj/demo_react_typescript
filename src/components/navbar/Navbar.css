@@ -59,7 +59,7 @@
       .items{
             border-radius: 10px;
             transition: 0.2s ease;
-          
+            
       }
 }
 .list_items li .popupItem .items:hover{
