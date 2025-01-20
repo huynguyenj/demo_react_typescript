@@ -20,7 +20,7 @@ const listStudent: student[] = [
   { id: 5, name: "Jennie" },
 ];
 
-type theme = "light" | "dark";
+type theme = "lighten" | "darker";
 
 function UnionTypes_Enum() {
   const inputElement = useRef<HTMLInputElement>(null);
@@ -28,7 +28,7 @@ function UnionTypes_Enum() {
     role: UserRole | null;
     isVisible: boolean;
   }>();
-  const [theme, setTheme] = useState<theme>("light");
+  const [theme, setTheme] = useState<theme>("lighten");
 
   const updateRoleValue = (): void => {
     if (inputElement.current) {
@@ -51,14 +51,14 @@ function UnionTypes_Enum() {
             break;
           default:
             setDisplay({ role: null, isVisible: false });
-            setTheme('light')
-            alert(`Your ${inputValue} is not suitable please try agin!`);
+            setTheme('lighten')
+            alert(`Your ${inputValue} is not suitable please try again!`);
         }
       }
     }
   };
   const changeTheme = (): void => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((prev) => (prev === "lighten" ? "darker" : "lighten"));
   };
   return (
     <div className={`union_enum_container ${theme}`}>
@@ -93,7 +93,7 @@ function UnionTypes_Enum() {
             {display?.isVisible ? (
               <div className="union_enum_btn_theme">
                 <button className="theme_btn" onClick={changeTheme}>
-                  Change color: {theme == "light" ? "dark" : "light"}{" "}
+                  Change color: {theme == "lighten" ? "dark" : "light"}{" "}
                 </button>
               </div>
             ) : (
